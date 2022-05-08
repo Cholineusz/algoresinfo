@@ -1,3 +1,3 @@
-[submodule "backend/AlgoRolo"]
-	path = backend/AlgoRolo
+[submodule "server/AlgoRolo"]
+	path = server/AlgoRolo
 	url = https://github.com/HashingSlash/AlgoRolo.git
