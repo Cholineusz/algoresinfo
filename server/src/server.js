@@ -1,17 +1,20 @@
-const express = require("express");
 require("./configs/database");
+const express = require("express");
+const cors = require("cors");
 const Application = require("./models/application");
 
 const app = express();
 const port = 5000;
 
+app.use(cors());
 app.use(express.json());
 
 app.get("/applications/", (req, res) => {
   let query = null;
-  const ids = JSON.parse(req.query.id);
-  if (Array.isArray(ids)) {
-    query = Application.where("_id").in(ids);
+  
+  const ids = req.query.id;
+  if (ids.includes(",")) {
+    query = Application.where("_id").in(ids.split(','));
   } else {
     query = Application.where({ _id: ids });
   }
