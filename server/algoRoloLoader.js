@@ -19,8 +19,9 @@ async function main() {
 
       try {
         await create();
+        console.log("Loaded: ", value[0]);
       } catch (error) {
-        console.log(error);
+        console.log("Skipped: ", value[0]);
       }
     }
   }
