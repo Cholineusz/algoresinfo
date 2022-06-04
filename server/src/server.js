@@ -9,12 +9,14 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
+app.use("/images", express.static("assets/apps"));
+
 app.get("/applications/", (req, res) => {
   let query = null;
-  
+
   const ids = req.query.id;
   if (ids.includes(",")) {
-    query = Application.where("_id").in(ids.split(','));
+    query = Application.where("_id").in(ids.split(","));
   } else {
     query = Application.where({ _id: ids });
   }
